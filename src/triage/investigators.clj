@@ -32,7 +32,7 @@ TASK:
                            :continue true
                            :in ""}
                           "claude"
-                          "--allowedTools" "Bash(git log:*) Bash(git diff:*) Bash(git show:*) Bash(ls:*) Bash(find:*) Bash(grep:*) Bash(head:*) Bash(tail:*) Read Glob Grep Task WebFetch WebSearch LSP"
+                          "--permission-mode" "plan"
                           "-p" full-prompt)
                  (catch Exception e
                    {:out ""

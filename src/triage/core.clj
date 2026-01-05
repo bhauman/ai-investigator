@@ -24,10 +24,10 @@
 
 (defn usage [options-summary]
   (str/join \newline
-            ["triage-swarm - Run parallel AI investigations and synthesize results"
+            ["ai-investigator - Run parallel AI investigations and synthesize results"
              ""
-             "Usage: triage-swarm [options] PROMPT"
-             "       echo PROMPT | triage-swarm [options]"
+             "Usage: ai-investigator [options] PROMPT"
+             "       echo PROMPT | ai-investigator [options]"
              ""
              "Options:"
              options-summary
@@ -43,16 +43,16 @@
              ""
              "Examples:"
              "  # Investigate a bug"
-             "  triage-swarm \"Why is the API returning 500 errors on /users?\""
+             "  ai-investigator \"Why is the API returning 500 errors on /users?\""
              ""
              "  # With verbose output"
-             "  triage-swarm -v \"Analyze the authentication flow\""
+             "  ai-investigator -v \"Analyze the authentication flow\""
              ""
              "  # Run investigations only (no evaluation)"
-             "  triage-swarm -i \"Search for memory leaks\""
+             "  ai-investigator -i \"Search for memory leaks\""
              ""
              "  # From stdin"
-             "  echo \"Fix the login bug\" | triage-swarm"]))
+             "  echo \"Fix the login bug\" | ai-investigator"]))
 
 (defn error-msg [errors]
   (str "Error parsing command line:\n\n"

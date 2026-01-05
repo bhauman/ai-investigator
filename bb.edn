@@ -2,4 +2,4 @@
 
  :deps {babashka/process {:mvn/version "0.5.22"}}
 
- :bbin/bin {triage-swarm {:main-opts ["-m" "triage.core"]}}}
+ :bbin/bin {ai-investigator {:main-opts ["-m" "triage.core"]}}}

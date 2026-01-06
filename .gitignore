@@ -2,3 +2,5 @@
 .cpcache/
 .nrepl-port
 *.log
+.bb-nrepl.pid
+.gemini/

@@ -38,7 +38,6 @@
              "  Results are synthesized by a Claude evaluator that produces:"
              "    - Primary path recommendation"
              "    - Backup path"
-             "    - Verification steps"
              "    - Implementation plan"
              ""
              "Examples:"

@@ -103,8 +103,14 @@ TASK:
         results (pmap #(% prompt :timeout-ms timeout-ms) investigators)]
     (vec results)))
 
+;; Anonymized names for evaluator (avoids model bias)
+(def investigator-aliases
+  {:claude "Alice"
+   :gemini "Bob"
+   :codex  "Carol"})
+
 (defn format-investigator-result
-  "Format a single investigator result for display"
+  "Format a single investigator result for display (uses real names)"
   [{:keys [investigator output error exit-code duration-ms]}]
   (str "## " (str/upper-case (name investigator)) " Investigation\n"
        "Duration: " (format "%.1f" (/ duration-ms 1000.0)) "s | "
@@ -114,7 +120,24 @@ TASK:
          (str "ERROR: " error "\n" output))
        "\n"))
 
+(defn format-investigator-result-anonymous
+  "Format a single investigator result with anonymized name (for evaluator)"
+  [{:keys [investigator output error exit-code duration-ms]}]
+  (let [alias (get investigator-aliases investigator "Unknown")]
+    (str "## " alias "'s Investigation\n"
+         "Duration: " (format "%.1f" (/ duration-ms 1000.0)) "s | "
+         "Exit: " exit-code "\n\n"
+         (if (zero? exit-code)
+           output
+           (str "ERROR: " error "\n" output))
+         "\n")))
+
 (defn format-all-results
-  "Format all investigator results for display or evaluation"
+  "Format all investigator results for display (uses real names)"
   [results]
   (str/join "\n---\n\n" (map format-investigator-result results)))
+
+(defn format-all-results-anonymous
+  "Format all investigator results with anonymized names (for evaluator)"
+  [results]
+  (str/join "\n---\n\n" (map format-investigator-result-anonymous results)))

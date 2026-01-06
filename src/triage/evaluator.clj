@@ -9,7 +9,7 @@
 ;; ============================================================================
 
 (def evaluator-system-prompt
-  "You are a senior software architect evaluating investigation reports from three AI assistants (Claude, Gemini, and Codex). Each assistant investigated the same problem independently.
+  "You are a senior software architect evaluating investigation reports from three investigators (Alice, Bob, and Carol). Each investigator analyzed the same problem independently.
 
 Your task is to synthesize their findings and produce:
 
@@ -17,16 +17,13 @@ Your task is to synthesize their findings and produce:
 
 2. **BACKUP PATH**: Identify an alternative approach in case the primary fails. Explain when to switch to this.
 
-3. **VERIFICATION STEPS**: List specific checks to validate the solution works:
-   - What tests to run
-   - What behavior to verify
-   - What edge cases to check
-
-4. **IMPLEMENTATION PLAN**: Provide a step-by-step plan:
+3. **IMPLEMENTATION PLAN**: Provide a step-by-step plan:
    - Each step should be concrete and actionable
    - Include file paths when known
    - Note any dependencies between steps
    - Estimate complexity (simple/medium/complex) for each step
+
+Do NOT include verification, validation, or testing steps. This is an investigation tool, not an implementation tool.
 
 Be concise but thorough. Focus on actionable guidance.")
 
@@ -37,14 +34,13 @@ Be concise but thorough. Focus on actionable guidance.")
        original-prompt
        "\n\n"
        "# Investigation Reports\n\n"
-       (inv/format-all-results results)
+       (inv/format-all-results-anonymous results)
        "\n\n"
        "# Your Evaluation\n\n"
        "Please synthesize the above investigations and provide:\n"
        "1. PRIMARY PATH - Best approach and rationale\n"
        "2. BACKUP PATH - Alternative approach\n"
-       "3. VERIFICATION STEPS - How to confirm the fix works\n"
-       "4. IMPLEMENTATION PLAN - Step-by-step instructions"))
+       "3. IMPLEMENTATION PLAN - Step-by-step instructions"))
 
 ;; ============================================================================
 ;; Evaluator invocation

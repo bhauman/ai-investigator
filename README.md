@@ -25,6 +25,10 @@ A Babashka CLI tool that runs Claude, Gemini, and Codex in parallel to investiga
 ### Install via bbin
 
 ```bash
+# From GitHub
+bbin install https://github.com/bhauman/ai-investigator.git
+
+# Or from local clone
 bbin install . --as ai-investigator
 ```
 

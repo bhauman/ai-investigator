@@ -47,6 +47,13 @@ ai-investigator -i "Search for memory leaks"
 # From stdin
 echo "Fix the login bug" | ai-investigator
 
+# Heredoc for multi-line prompts
+ai-investigator <<EOF
+The user signup flow is broken.
+After submitting the form, users see a blank page.
+Check the frontend validation and API endpoint.
+EOF
+
 # Custom timeouts
 ai-investigator -t 300000 --eval-timeout 120000 "Debug the cache issue"
 ```

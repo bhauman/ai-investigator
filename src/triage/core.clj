@@ -51,7 +51,13 @@
              "  ai-investigator -i \"Search for memory leaks\""
              ""
              "  # From stdin"
-             "  echo \"Fix the login bug\" | ai-investigator"]))
+             "  echo \"Fix the login bug\" | ai-investigator"
+             ""
+             "  # Heredoc for multi-line prompts"
+             "  ai-investigator <<EOF"
+             "  The user signup flow is broken."
+             "  Check the frontend validation and API endpoint."
+             "  EOF"]))
 
 (defn error-msg [errors]
   (str "Error parsing command line:\n\n"
